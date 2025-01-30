@@ -28,7 +28,7 @@ public class Rabbit extends Entity implements Runnable {
         try {
           Thread.sleep(time * random.nextInt(10));
         } catch (InterruptedException e) {
-          System.err.println("Farmer thread interrupted");
+          System.err.println("Rabbit thread interrupted");
         }
         field.eatCarrot(x, y);
         continue;

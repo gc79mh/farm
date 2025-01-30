@@ -30,6 +30,7 @@ public class Field {
   public synchronized boolean canFix(int x, int y) {
     return grid[x][y] == 'D';
   }
+
   public synchronized void fix(int x, int y) {
     if (grid[x][y] == 'D') grid[x][y] = '.';
   }
