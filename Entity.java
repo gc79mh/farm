@@ -4,7 +4,6 @@ import java.util.*;
 public class Entity {
   protected int x, y;
   protected int time = 250;
-  protected int waiting = 0;
   protected final Field field;
   protected final Random random = new Random();
 

@@ -5,7 +5,6 @@ public class Dog extends Entity implements Runnable {
   private Rabbit target = null;
   private List<Rabbit> rabbits = new ArrayList<>();
 
-
   public Dog(int x, int y, Field field) {
     super(x, y, field);
   }
@@ -22,8 +21,8 @@ public class Dog extends Entity implements Runnable {
         chase();
       }
       else {
-        move(field.getSize(), field.getSize());
         sniff();
+        move(field.getSize(), field.getSize());
       }
       try {
         Thread.sleep(time);

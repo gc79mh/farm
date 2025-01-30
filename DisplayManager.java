@@ -4,20 +4,11 @@ import java.util.*;
 public class DisplayManager {
   private List<Entity> entities = new ArrayList<>();
   private Field field;
-  private Farmer farmer;
-  private List<Rabbit> rabbits = new ArrayList<>();
-  private Dog dog;
   private char[][] grid;
 
-  public DisplayManager(Field field, Farmer farmer) {
-    this.farmer = farmer;
+  public DisplayManager(Field field) {
     this.field = field;
-    this.dog = farmer.getDog();
     this.grid = field.getGrid();
-  }
-
-  public void addRabbit(Rabbit rabbit) {
-    rabbits.add(rabbit);
   }
 
   public void addEntity(Entity entity) {
@@ -52,8 +43,6 @@ public class DisplayManager {
           }
         }
 
-
-        
         if (grid[x][y] == 'C' && !drawn) {
           System.out.print("🥕");
         }
@@ -61,10 +50,8 @@ public class DisplayManager {
           System.out.print("🟫");
         }
         else if (!drawn){
-         // System.out.print(grid[x][y]);
           System.out.print("🟩");
         }
-        
 
       }
       System.out.print("\n");

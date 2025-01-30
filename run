@@ -2,6 +2,6 @@
 
 clear
 javac *.java
-java FarmSimulation 10 50 2
+java FarmSimulation $1 $2 $3
 rm -fr *.class
-
+echo -e "\033[?25h"

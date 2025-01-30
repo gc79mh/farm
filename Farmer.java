@@ -7,21 +7,19 @@ public class Farmer extends Entity implements Runnable {
   public Farmer(int x, int y, Field field, Dog dog) {
     super(x, y, field);
     this.dog = dog;
-    waiting = 0;
   }
 
   public String getType() {
     return "Farmer";
   }
 
+  public Dog getDog() {
+    return dog;
+  }
+
   @Override
   public void run() {
     while (true) {
-      if (waiting != 0) {
-        waiting--;
-        continue;
-      }
-
       move(field.getSize(), field.getSize());
       
       if (field.canFix(x, y)) {
@@ -33,6 +31,7 @@ public class Farmer extends Entity implements Runnable {
         field.fix(x, y);
         continue;
       }
+
       if (field.canPlant(x, y)) {
         try {
           Thread.sleep(time * random.nextInt(10));
@@ -51,7 +50,4 @@ public class Farmer extends Entity implements Runnable {
     }
   }
 
-  public Dog getDog() {
-    return dog;
-  }
 }
