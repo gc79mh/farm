@@ -8,6 +8,10 @@ public class Rabbit extends Entity implements Runnable {
     super(x, y, field);
   }
 
+  public String getType() {
+    return "Rabbit";
+  }
+
   public void die() {
     alive = false;
   }
@@ -20,7 +24,15 @@ public class Rabbit extends Entity implements Runnable {
   public void run() {
     while (alive) {
       move(field.getSize(), field.getSize());
-      field.eatCarrot(x, y);
+      if (field.canEat(x, y)) {
+        try {
+          Thread.sleep(time * random.nextInt(10));
+        } catch (InterruptedException e) {
+          System.err.println("Farmer thread interrupted");
+        }
+        field.eatCarrot(x, y);
+        continue;
+      }
       try {
         Thread.sleep(time);
       } catch (InterruptedException e) {

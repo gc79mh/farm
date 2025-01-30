@@ -25,6 +25,10 @@ public class Entity {
     return y;
   }
 
+  public String getType() {
+    return "Entity";
+  }
+
   public void move(int maxX, int maxY) {
     x = Math.max(0, Math.min(maxX - 1, x + random.nextInt(3) - 1));
     y = Math.max(0, Math.min(maxY - 1, y + random.nextInt(3) - 1));

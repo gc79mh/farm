@@ -10,6 +10,10 @@ public class Farmer extends Entity implements Runnable {
     waiting = 0;
   }
 
+  public String getType() {
+    return "Farmer";
+  }
+
   @Override
   public void run() {
     while (true) {
@@ -20,7 +24,6 @@ public class Farmer extends Entity implements Runnable {
 
       move(field.getSize(), field.getSize());
       
-
       if (field.canFix(x, y)) {
         try {
           Thread.sleep(time * random.nextInt(10));

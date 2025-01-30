@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.*;
 
 public class DisplayManager {
+  private List<Entity> entities = new ArrayList<>();
   private Field field;
   private Farmer farmer;
   private List<Rabbit> rabbits = new ArrayList<>();
@@ -19,27 +20,40 @@ public class DisplayManager {
     rabbits.add(rabbit);
   }
 
+  public void addEntity(Entity entity) {
+    entities.add(entity);
+  }
+
   public void display() {
-    System.out.print("\033[H\033[2J");  
+    System.out.print("\033[?25l");
+    System.out.print("\033[H");
+
     System.out.flush();
     for (int y = 0 ; y < field.getSize() ; y++) {
       for (int x = 0 ; x < field.getSize() ; x++) {
         boolean drawn = false;
-
-        if (x == farmer.getX() && y == farmer.getY()) {
-          System.out.print("👨");
-          drawn = true;
-        }
-        else if (x == dog.getX() && y == dog.getY()) {
-          System.out.print("🐶");
-          drawn = true;
-        }
-        for (Rabbit rabbit : rabbits) {
-          if (x == rabbit.getX() && y == rabbit.getY() && rabbit.getAlive() && !drawn) {
-            System.out.print("🐰");
+        for (Entity entity : entities) {
+          if (x == entity.getX() && y == entity.getY() && entity.getType() == "Farmer") {
+            System.out.print("👨");
             drawn = true;
+            break;
+          }
+          else if (x == entity.getX() && y == entity.getY() && entity.getType() == "Dog") {
+            System.out.print("🐶");
+            drawn = true;
+            break;
+          }
+          else if (x == entity.getX() && y == entity.getY() && entity.getType() == "Rabbit") {
+            if (((Rabbit) entity).getAlive()) {
+              System.out.print("🐰");
+              drawn = true;
+              break;
+            }
           }
         }
+
+
+        
         if (grid[x][y] == 'C' && !drawn) {
           System.out.print("🥕");
         }

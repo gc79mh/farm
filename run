@@ -2,6 +2,6 @@
 
 clear
 javac *.java
-java FarmSimulation
+java FarmSimulation 10 50 2
 rm -fr *.class
 
