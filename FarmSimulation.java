@@ -29,7 +29,7 @@ public class FarmSimulation {
 
     System.out.print("\033[H\033[2J");
 
-    for (int i = 0; i < 2000; i++) {
+    while (true) {
       
       if (rabbitTimer == 0) {
         rabbitTimer = rabbitTime;
